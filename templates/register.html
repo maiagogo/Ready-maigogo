@@ -1,0 +1,36 @@
+{% extends "basep.html" %}
+{% block body_block %}
+<div cass="row-fluid">
+<div cass="span12">
+<div class="hero-unit">
+   <h1>Register with Maiagogo</h1>
+    <br />
+   {% if registered %}
+   <p>Thank you for registering.</p>
+   <p><a href="/maiagogo/user_login/">Login</a> when you are read!.</p>
+   {% else %}
+   <form  id="user_form" method="post" action="/maiagogo/register/"
+   enctype="multipart/form-data">
+   {% csrf_token %}
+   <h2 class="form-signin-heading">Sign up Here</h2>
+   <!-- Display each form here -->
+{% for field in user_form.visible_fields %} 
+     {{field.errors }} 
+     {{field.help_text}}</br> 
+     {{field }}</br>
+  {% endfor %} 
+  {% for field in profile_form.visible_fields %} 
+     {{field.errors }} 
+     {{field.help_text}}</br> 
+     {{field }} 
+  {% endfor %} 
+<br />
+<!-- Provide a button to click to submit the form. -->
+<input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+</form>
+{% endif %}
+</div>
+</div>
+</div>
+{% endblock %}
+

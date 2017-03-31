@@ -1,0 +1,31 @@
+{% extends 'basep.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="row-fluid">
+<div class="span12">
+<div class="hero-unit">
+    <h1>Maiagogo Blog!<small> A room where you can...</small></h1>
+    <p class="lead">Find, Add, Share your useful posts.</p>
+<img src="{% static 'pic1.jpg' %}"  width="100%" height="200" alt="Picture " />
+</div>
+</div>
+</div>
+
+<div class="row-fluid">
+ <div class="span12">
+<div class="hero-unit">
+    <h1>New Post</h1>
+    <br/>
+ <form  method="POST" class ="post-form"  action="/maiagogo/post/new/">   
+  {% csrf_token %} 
+  {{ form.as_p }}
+  <br/>
+  <button class="btn btn-primary" type="submit" >Create Post</button> 
+ </form>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
