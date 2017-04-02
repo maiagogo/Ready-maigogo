@@ -20,7 +20,7 @@
 <p class="text-right" class="lead">published: {{ post.published_date }}
 </p>
 {% endif %}
-<h3><a href={% url 'post_edit' pk=post.pk %}><p class="text-right"> Edit</p></a></h3>
+<h3><a href= "/maiagogo/post/{{post.pk }}/edit"><p class="text-right"> Edit</p></a></h3>
 
 <div class="titile">
 <h3><a	href="/maiagogo/post/{{post.pk }}">{{ post.title }}</a></h3>
@@ -30,5 +30,8 @@
 </div>
 </div>
 </div>
+
+
+
 
 {% endblock %}

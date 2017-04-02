@@ -185,7 +185,7 @@ def profile(request):
     return render(request, 'profile.html', context_dict)
 
 def category(request, category_name_url):
-     cat_list = get_category_list()
+    cat_list = get_category_list()
     # Change underscores in the category name to spaces.
     # URLs don't handle spaces well, so we encode them as underscores.
     # We can then simply replace the underscores with spaces again to get the name.

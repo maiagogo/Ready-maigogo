@@ -16,6 +16,7 @@ url(r'^add_category/', 'maiagogo.views.add_category', name='add_category'),
 url(r'^category/(?P<category_name_url>\w+)/add_page/', 'maiagogo.views.add_page', name='add_page'),
 url(r'^profile/', 'maiagogo.views.profile', name='profile'),
 url(r'^goto/', 'maiagogo.views.track_url', name='track_url'),
+ url(r'^like_category/', 'maiagogo.views.like_category', name='like_category'),
 )
 
 

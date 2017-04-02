@@ -15,7 +15,7 @@
 <div class="span12">
 {% for post in posts %}
 <p class="lead">published: {{ post.published_date }}</p>
-<h3><a	href="/maiagogo/post/{{post.pk }}">{{ post.title }}</a></h3>
+<h3><a	href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
 <p class="lead">{{ post.text|linebreaksbr }}</p>
 {% endfor %}
 </div>
