@@ -11,6 +11,7 @@
   <link href="{% static 'bootstrap-fluid-adj.css' %}" rel="stylesheet">
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
   <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" >
+  <link	href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"	rel="stylesheet" type="text/css">
 </head>
 <div class="navbar navbar-inverse navbar-fixed-top"> 
 <div class="navbar-inner"> 
@@ -20,8 +21,9 @@
            <span class="icon-bar"></span> 
            <span class="icon-bar"></span> 
          </button> 
-         <a class="brand" href="#">Maiagogo</a> 
-         <a class="brand" href="/maiagogo/great/">Home</a> 
+         <a class="brand" href="/maiagogo/Home/">Maiagogo</a> 
+         <a class="brand" href="/maiagogo/post_list/">Blog</a>
+         <a class="brand" href="/maiagogo/About/">About</a>
          <div class="nav-collapse collapse"> 
            <ul class="nav pull-right"> 
               {% if user.is_authenticated %} 
@@ -29,36 +31,32 @@
               <li><a href="/maiagogo/profile/">My profile</a></li>
               <li class="active"><a href="/maiagogo/user_logout/">Logout</a></li> 
               {% else %} 
-              <li><a href="/maiagogo/profile/">My profile</a></li>
               <li><a href="/maiagogo/register/">Register</a></li> 
               <li><a href="/maiagogo/user_login/">Login</a></li>
               {% endif %} 
            </ul> 
-           <ul class="nav"> 
-              {% if user.is_authenticated %} 
-              <li><a href="/maiagogo/restricted/">Restricted</a></li> 
-              <li><a href="/maiagogo/add_category/">Add Category</a></li> 
-              {% endif %} 
-
+           <ul class="nav">
           <ul class="nav nav-tabs">
           <li class="dropdown">
             <a class="dropdown-toggle"
                data-toggle="dropdown"
                href="#">
-                Links
+                Add
               <b class="caret"></b>
               </a>
             <ul class="dropdown-menu">
+               
               
-             <li ><a tabindex="-1" href="/maiagogo/About/">About</a></li> 
-             <li ><a tabindex="-1" href="/maiagogo/about/">Useful Theme</a></li> 
-
-
+              <li><a tabindex="-1" href="/maiagogo/post/new/" >Add Post </a></li>
+              <li><a  tabindex="-1" href="/maiagogo/add_category/">Add Category</a></li> 
+              <li ><a tabindex="-1" href="/maiagogo/about/">Useful Theme</a></li> 
+              
+             
               <!-- links -->
             </ul>
           </li>
         </ul>
-
+        </ul>
         <form class="navbar-search pull-left">
           <input type="text" class="search-query" placeholder="Search">
         </form>

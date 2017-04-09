@@ -30,14 +30,25 @@ def track_url(request):
 
 
 def post_list(request):
+    cat_list = get_category_list()
     posts = Post.objects.all()
-    return render(request, 'post_list.html', {'posts': posts})
+    return render(request, 'post_list.html', {'posts': posts,'cats': cat_list })
+def About(request):
+    cat_list = get_category_list()
+    return render(request, 'about.html', {'cats':cat_list})
+
+
+def about(request):
+    cat_list = get_category_list()
+    return render(request, "base2.html", {'cats': cat_list})
 
 def post_detail(request, pk):
+    cat_list = get_category_list()
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'post_detail.html', {'post': post})
-
+    return render(request, 'post_detail.html', {'post': post, 'cats': cat_list})
+@login_required
 def post_new(request):
+        cat_list = get_category_list()
 	if request.method == "POST":
            form	= PostForm(request.POST)
 	   if form.is_valid():
@@ -48,12 +59,14 @@ def post_new(request):
 		return	redirect('post_detail',	pk=post.pk)
 	else:
 	      form = PostForm()
-	return	render(request,	'post_edit.html', {'form': form})
-
+	return	render(request,	'post_edit.html', {'form': form, 'cats': cat_list})
+@login_required
 def post_edit(request, pk):
+    instance = Post.objects.get(pk=pk)
+    cat_list = get_category_list()
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST or None, instance=instance)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -62,10 +75,11 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'post_edit.html', {'form': form})
+    return render(request, 'post_edit.html', {'form': form, 'cats': cat_list})
 
 
 def register(request):
+    cat_list = get_category_list()
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code change
     registered = False
@@ -109,10 +123,11 @@ def register(request):
 # Render the template depending on the context.
     return render(request,
 'register.html',
-{'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
+{'user_form': user_form, 'profile_form': profile_form, 'registered': registered , 'cats': cat_list} )
 
 def user_login(request):
-        context_dict = {}
+        cat_list = get_category_list()
+        context_dict = {'cats': cat_list}
 	# If the request is a HTTP POST, try to pull out the relevant information.
 	if request.method == 'POST':
 		# Gather the username and password provided by the user.
@@ -147,13 +162,13 @@ def user_login(request):
 	else:
 		# No context variables to pass to the template system, hence the
 		# blank dictionary object...
-		return render(request, 'login.html', {})
+		return render(request, 'login.html', {'cats': cat_list})
 
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/maiagogo/post_list')
+    return HttpResponseRedirect('/maiagogo/Home')
 
 def encode_url(str):
     return str.replace(' ', '_')
@@ -171,7 +186,7 @@ def index(request):
     context_dict={'categories':category_list, 'pages':page_list}
     context_dict['cats'] = cat_list
     return render(request, 'index.html', context_dict)
-
+@login_required
 def profile(request):
     cat_list = get_category_list()
     context_dict = {'cats': cat_list}
@@ -214,7 +229,7 @@ def category(request, category_name_url):
        pass
 #Go render the response and return it to the client.
     return render(request, 'category.html', context_dict)
-
+@login_required
 def like_category(request):
     cat_id = None
     if request.method == 'GET':
@@ -229,8 +244,9 @@ def like_category(request):
             category.save()
 
     return HttpResponse(likes)
-
+@login_required
 def add_category(request): 
+    cat_list=get_category_list()
     # A HTTP POST? 
     if request.method == 'POST': 
         form = CategoryForm(request.POST) 
@@ -249,8 +265,8 @@ def add_category(request):
         form = CategoryForm() 
 # Bad form (or form details), no form supplied... 
 # Render the form with error messages (if any). 
-    return render(request, 'add_category.html', {'form': form}) 
-
+    return render(request, 'add_category.html', {'form': form ,'cats': cat_list}) 
+@login_required
 def add_page(request, category_name_url):
     
     context_dict = {}

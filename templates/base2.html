@@ -1,0 +1,76 @@
+{% extends "maintemplate.html" %}
+{% load staticfiles %}
+{% block body_block %}
+<div class="row-fluid">
+   <div class="span12">
+   <div class="hero-unit">
+   <p><h1> Top 5 Talents Theme<h1><small>By Clifton strengthsFinder</small></p>
+   </div>
+   </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h2>Achiever </h2>
+    <p class="lead"> 
+    People exceptionally talented in the Achiever theme
+    work hard and possess a great deal of staminater. 
+    They take immense satisfaction in being busy and productive.
+    </p>
+    <a class="btn btn-primary btn"> See more </a>
+  </div>
+    <!--/span-->
+  <div class="span6">
+     <h2>Activator </h2>
+     <p class="lead">
+     People axceptionlly talented in the Activator theme can make things 
+     happen by turning tought into action.
+    They are often impatient.
+    </p>
+    <a class="btn btn-primary btn">See more</a>
+  </div>
+   <!--/span-->
+</div>
+<!--/row-->
+
+<div class="row-fluid">
+  <div class="span6">
+    <h2>Analytical </h2>
+    <p class="lead"> 
+    People axceptionlly talented in the Analytical theme search for reasons and couses.
+    They have the ability to think about all the factors
+    that may affect a situation.
+    </p>
+    <a= class="btn btn-primary btn">See more</a>
+  </div>
+    <!--/span-->
+  <div class="span6">
+     <h2>Learner </h2>
+     <p class="lead">
+     People axceptionlly talented in the Learner theme have a great desire to learn
+     and want to continuesly improve.
+     The process of learning rather than the outcome,
+     excites them.
+     </p>
+    <a class="btn btn-primary btn">See More</a>    
+  </div>
+</div>
+   <!--/span-->
+<div class="row-fluid">
+<div class="span6">
+      <h2>Relator<h2>
+      <p class="lead">
+      people exceptionally talented in the Relator theme
+      enjoy close relationships with others.
+      They find deep satisfaction in working hard with friends to achieve a goal
+      </p>
+      <a class="btn btn-primary btn"> See more</a>
+</div>
+
+<div class="span6">
+<img src="{% static 'ml.jpg' %}"  width="500" height="200" alt="Picture of Rango" />
+</div>
+
+
+</div>
+<!--/row-->
+{% endblock %} 

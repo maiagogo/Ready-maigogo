@@ -28,11 +28,11 @@ STATICFILES_DIRS = (
 SECRET_KEY = '#lu4r5rz3uwr32-!c32pqrl9)#(0f*nf#gp+y)a8mt0yzn1scx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -89,3 +89,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/maiagogo/user_login/'
